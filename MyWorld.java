@@ -19,11 +19,12 @@ public class MyWorld extends World
     int x = 136;
     int coordinate = 77;
     private boolean gameOver;
-    
+    ArrayList<String> Scores;
+
     GreenfootSound swoosh = new GreenfootSound("swoosh.wav");
     GreenfootSound UWon = new GreenfootSound("won.wav");
     GreenfootSound ULost = new GreenfootSound("loose.mp3");
-    
+
     public void randomVal()
     {
         int X[] = new int[16];
@@ -85,12 +86,16 @@ public class MyWorld extends World
         catch (IOException e) {
             e.printStackTrace();
         }
+        Scores = HighScores.read(".\\LeaderBoard.txt");
+        Scores.add(String.valueOf(Score));
         try {
             BufferedWriter writerS = new BufferedWriter (new FileWriter(".\\LeaderBoard.txt"));
-            writerS.write(String.valueOf(Score));
+            for(int i=0;i < Scores.size(); i++) {
+                writerS.write(Scores.get(i));
+                writerS.newLine();
+            }
             writerS.close();
         }
-
         catch (IOException e) {
             e.printStackTrace();
         }
@@ -111,9 +116,7 @@ public class MyWorld extends World
         }
         try {
             BufferedReader readerS = new BufferedReader (new FileReader(".\\score.txt"));
-
             Score = Integer.parseInt(readerS.readLine());
-
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -129,7 +132,6 @@ public class MyWorld extends World
             int rand1 = Greenfoot.getRandomNumber(4);
             int rand2 = Greenfoot.getRandomNumber(4);
 
-           
             for(int r1 = 0; r1<4; r1++) 
             {
                 for(int r2 = 0; r2<4;r2++) {
@@ -186,7 +188,6 @@ public class MyWorld extends World
             }
         }
     }
-
 
     public boolean didULose()
     {

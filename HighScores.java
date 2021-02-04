@@ -13,7 +13,7 @@ public class HighScores extends World
     ReturnYt r = new ReturnYt();
     ArrayList<String> TempList = new ArrayList<String>();
     String[] Scores;
-    public static int[] finalScores = new int[6];
+    public static int[] finalScores;
     int tempgg = 0;  
 
     /**
@@ -36,7 +36,7 @@ public class HighScores extends World
             Greenfoot.setWorld (new Menu());
         }
     }
-    
+
     public static java.util.ArrayList<String> read(String filename) { 
         ArrayList<String> fileText = new ArrayList<String>();
         BufferedReader saveFile = null;
@@ -69,7 +69,8 @@ public class HighScores extends World
     public static void arrange(){ 
         String[] Scores = new String[5];
         Scores = read(".\\LeaderBoard.txt").toArray(Scores);
-        for (int i = 0; i < 5; i++){
+        finalScores = new int[Scores.length];
+        for (int i = 0; i < Scores.length; i++){
             finalScores[i] = Integer.parseInt(Scores[i]);
         }
 
@@ -80,16 +81,17 @@ public class HighScores extends World
             finalScores[i] = finalScores[finalScores.length - i - 1];
             finalScores[finalScores.length - i - 1] = temp;
         }
+
     }
 
     public void show() {
-        for (int i=0;i < 6;i++) {
+        for (int i=0;i < 5;i++) {
             int valueInShow = i + 1;
             int moveDown = i * 50;
             showText(String.valueOf(valueInShow) + ": " + String.valueOf(finalScores[i]), 70, 180 + moveDown);
-            
+
         }
-        
+
     }
 }
 

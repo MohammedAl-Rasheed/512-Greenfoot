@@ -22,7 +22,8 @@ public class MyWorldYtGR extends World
     GreenfootSound swoosh = new GreenfootSound("swoosh.wav");
     GreenfootSound UWon = new GreenfootSound("won.wav");
     GreenfootSound ULost = new GreenfootSound("loose.mp3");
-
+    ArrayList<String> Scores;
+    
     public void randomVal()
     {
         int X[] = new int[16];
@@ -59,7 +60,7 @@ public class MyWorldYtGR extends World
         printArray();
     }
 
-    public void save() {
+        public void save() {
         try {
             BufferedWriter writer = new BufferedWriter (new FileWriter(".\\save.txt"));
             for (int j=0; j<4;j++) {
@@ -84,12 +85,16 @@ public class MyWorldYtGR extends World
         catch (IOException e) {
             e.printStackTrace();
         }
+        Scores = HighScores.read(".\\LeaderBoard.txt");
+        Scores.add(String.valueOf(Score));
         try {
             BufferedWriter writerS = new BufferedWriter (new FileWriter(".\\LeaderBoard.txt"));
-            writerS.write(String.valueOf(Score));
+            for(int i=0;i < Scores.size(); i++) {
+                writerS.write(Scores.get(i));
+                writerS.newLine();
+            }
             writerS.close();
         }
-
         catch (IOException e) {
             e.printStackTrace();
         }
