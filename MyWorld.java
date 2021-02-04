@@ -19,6 +19,7 @@ public class MyWorld extends World
     int x = 136;
     int coordinate = 77;
     private boolean gameOver;
+    
     GreenfootSound swoosh = new GreenfootSound("swoosh.wav");
     GreenfootSound UWon = new GreenfootSound("won.wav");
     GreenfootSound ULost = new GreenfootSound("loose.mp3");
@@ -77,6 +78,15 @@ public class MyWorld extends World
         }
         try {
             BufferedWriter writerS = new BufferedWriter (new FileWriter(".\\score.txt"));
+            writerS.write(String.valueOf(Score));
+            writerS.close();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            BufferedWriter writerS = new BufferedWriter (new FileWriter(".\\LeaderBoard.txt"));
             writerS.write(String.valueOf(Score));
             writerS.close();
         }

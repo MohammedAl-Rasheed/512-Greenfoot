@@ -15,7 +15,8 @@ public class Menu extends World
     Exit b2=new Exit();
     Info b3 = new Info();
     lb lb = new lb();
-    
+    trophy HighLB = new trophy();
+
     /**
      * Constructor for objects of class Menu.
      * This creates and array list that holds the values of our menu
@@ -27,7 +28,8 @@ public class Menu extends World
         addObject(b2,275,380);
         addObject(b3,275,510);
         addObject(lb,480,70);
-        
+        addObject(HighLB,70,80);
+
     }
 
     /**
@@ -51,6 +53,10 @@ public class Menu extends World
         {
             Greenfoot.setWorld (new MenuYt());
         } 
+        if (Greenfoot.mousePressed(HighLB))
+        {
+            Greenfoot.setWorld (new HighScores());
+        }
     }
     /**
      * This method determines which world you will be sent to based off of which option on the menu you choose

@@ -84,6 +84,15 @@ public class MyWorldYtGR extends World
         catch (IOException e) {
             e.printStackTrace();
         }
+        try {
+            BufferedWriter writerS = new BufferedWriter (new FileWriter(".\\LeaderBoard.txt"));
+            writerS.write(String.valueOf(Score));
+            writerS.close();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

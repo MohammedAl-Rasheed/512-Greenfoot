@@ -15,7 +15,8 @@ public class MenuYt extends World
     ExitYt b2=new ExitYt();
     InfoYt b3 = new InfoYt();
     LBYt lb =new LBYt();
-   
+    trophyYt HighLB = new trophyYt();
+
     /**
      * Constructor for objects of class Menu.
      * 
@@ -27,7 +28,7 @@ public class MenuYt extends World
         addObject(b2,275,380);
         addObject(b3,275,510);
         addObject(lb,480,70);
-       
+        addObject(HighLB,70,80);
     }
 
     public void act() {
@@ -46,6 +47,10 @@ public class MenuYt extends World
         if (Greenfoot.mousePressed(b3))
         {
             Greenfoot.setWorld (new CustomizeYt());
+        }
+        if (Greenfoot.mousePressed(HighLB))
+        {
+            Greenfoot.setWorld (new HighScoresYt());
         }
     }
 }
