@@ -182,6 +182,7 @@ public class MyWorldYtGR extends World
         for(int j=0; j < 4;j++) {
             for (int i=0; i < 4; i++) {
                 if (Temp[j][i] == 512) {
+                    save();
                     System.out.println("You Won");
                     Greenfoot.setWorld (new GameWonYt());
                     UWon.play();
@@ -228,6 +229,7 @@ public class MyWorldYtGR extends World
         didUWin();
         didULose();
         if (gameOver == true) {
+            save();
             Greenfoot.setWorld (new GameOverYt());
             ULost.play();
         }

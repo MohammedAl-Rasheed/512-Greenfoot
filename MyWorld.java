@@ -101,7 +101,6 @@ public class MyWorld extends World
         }
 
     }
-
     public void check() {
         try {
             BufferedReader reader = new BufferedReader (new FileReader(".\\save.txt"));
@@ -181,6 +180,7 @@ public class MyWorld extends World
         for(int j=0; j < 4;j++) {
             for (int i=0; i < 4; i++) {
                 if (Temp[j][i] == 512) {
+                    save();
                     System.out.println("You Won");
                     Greenfoot.setWorld (new GameWon());
                     UWon.play();
@@ -227,6 +227,7 @@ public class MyWorld extends World
         didUWin();
         didULose();
         if (gameOver == true) {
+            save();
             Greenfoot.setWorld (new GameOver());
             ULost.play();
         }
